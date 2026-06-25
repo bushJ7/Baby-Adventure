@@ -9,11 +9,12 @@ struct Patient{
 // ly heang
 void add_patient(int size,int amount,struct Patient patients[]);
 // ronith
-void delete_patient(int id,int size,struct Patient patients[]);
+void delete_patient(int id,int *size,struct Patient patients[]);
 // sithika
 void search(int id,int size,struct Patient patients[]);
 // kimnai
 void update_status(int id,int size,struct Patient patients[]);
+
 
 void main(){
 
