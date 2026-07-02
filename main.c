@@ -1,22 +1,23 @@
 #include <stdio.h>
-struct Patient{
-    int patient_id;
+typedef struct {
+    char dr_name[40];
+    char specialty[40];
+}Doctor;
+typedef struct{
+    float medicineCost;
+    float serviceFee;
+    float totalBill;
+}Bill;
+typedef struct{
+    char patient_id[10];
     char name[50];
     int age;
-    char diagnosis[100];
-    char doctor[50];
-};
-// ly heang
-void add_patient(int size,int amount,struct Patient patients[]);
-// ronith
-void delete_patient(int id,int *size,struct Patient patients[]);
-// sithika
-void search(int id,int size,struct Patient patients[]);
-// kimnai
-void update_status(int id,int size,struct Patient patients[]);
-
-
+    char symptom[40];
+    char status[30];
+    char diagnose[30];
+    Bill bill;
+    Doctor dr;
+}Patient;
 void main(){
 
-    printf("hello world");
 }
