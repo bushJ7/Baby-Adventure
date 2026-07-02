@@ -47,3 +47,27 @@ void calculate_bill(Patient patient[],int size){
     patient[index].bill.totalBill = patient[index].bill.serviceFee + patient[index].bill.medicineCost;
     printf("successfully calculate the bill\n");
 }
+void search_patient(Patient patient[],int size){
+    char target_id[10];
+    prompt_id(target_id);
+    int i = find_index(patient,size,target_id);
+    if (i==-1){
+        printf("patient not found\n");
+        return;
+    }
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+- -------------+--------------+\n");
+    printf("| %-9s | %-20s | %-3s | %-22s | %-10s | %-20s | %-11s | %-12s | %-12s |\n",
+           "ID", "Name", "Age", "Symptom", "Status", "Doctor", "Service Fee", "Medicine", "Total Bill");
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
+    printf("| %-9s | %-20s | %-3d | %-22s | %-10s | %-20s | %-11.2f | %-12.2f | %-12.2f |\n",
+            patient[i].patient_id,
+            patient[i].name,
+            patient[i].age,
+            patient[i].symptom,
+            patient[i].status,
+            patient[i].dr.dr_name,
+            patient[i].bill.serviceFee,
+            patient[i].bill.medicineCost,
+            patient[i].bill.totalBill);
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
+}
