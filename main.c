@@ -71,3 +71,29 @@ void search_patient(Patient patient[],int size){
             patient[i].bill.totalBill);
     printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
 }
+
+void display(Patient patient[], int size) {
+    if (size == 0) {
+        printf("No patient records found.\n");
+        return;
+    }
+
+    printf("\n");
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
+    printf("| %-9s | %-20s | %-3s | %-22s | %-10s | %-20s | %-11s | %-12s | %-12s |\n",
+           "ID", "Name", "Age", "Symptom", "Status", "Doctor", "Service Fee", "Medicine", "Total Bill");
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
+    for (int i = 0; i < size; i++) {
+        printf("| %-9s | %-20s | %-3d | %-22s | %-10s | %-20s | %-11.2f | %-12.2f | %-12.2f |\n",
+               patient[i].patient_id,
+               patient[i].name,
+               patient[i].age,
+               patient[i].symptom,
+               patient[i].status,
+               patient[i].dr.dr_name,
+               patient[i].bill.serviceFee,
+               patient[i].bill.medicineCost,
+               patient[i].bill.totalBill);
+    }
+    printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
+}
