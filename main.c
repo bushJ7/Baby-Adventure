@@ -81,10 +81,3 @@ void discharge(Patient patient[],int size){
     printf("==================================================\n");
     printf("Patient file finalized successfully.\n");
 }
-void record_info(Patient patient[], int size){
-    FILE *ptr = fopen("patient_information.txt","w");
-
-    if(ptr == NULL){
-        printf("Cannot open file!\n");
-        return;
-    }
