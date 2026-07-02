@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+const int MAX_SIZE = 100;
 typedef struct {
     char dr_name[40];
     char specialty[40];
