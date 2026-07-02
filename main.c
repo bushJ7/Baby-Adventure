@@ -81,3 +81,32 @@ void discharge(Patient patient[],int size){
     printf("==================================================\n");
     printf("Patient file finalized successfully.\n");
 }
+void record_info(Patient patient[], int size){
+    FILE *ptr = fopen("patient_information.txt","w");
+
+    if(ptr == NULL){
+        printf("Cannot open file!\n");
+        return;
+    }
+
+
+    fprintf(ptr,
+    "ID|Name|Age|Symptom|Status|Diagnosis|Doctor|Service Fee|Medicine|Total Bill\n");
+
+    for(int i = 0; i < size; i++){
+        fprintf(ptr,
+        "%s|%s|%d|%s|%s|%s|%s|%.2f|%.2f|%.2f\n",
+        patient[i].patient_id,
+        patient[i].name,
+        patient[i].age,
+        patient[i].symptom,
+        patient[i].status,
+        patient[i].diagnose,
+        patient[i].dr.dr_name,
+        patient[i].bill.serviceFee,
+        patient[i].bill.medicineCost,
+        patient[i].bill.totalBill);
+    }
+
+    fclose(ptr);
+}
