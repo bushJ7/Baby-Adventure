@@ -71,3 +71,23 @@ void search_patient(Patient patient[],int size){
             patient[i].bill.totalBill);
     printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
 }
+void update_status(Patient patient[],int size){
+    char target_id[10];
+    prompt_id(target_id);
+    printf("\n--- Update Patient Health Status ---\n");
+    int index = find_index(patient, size, target_id);
+    if (index == -1) {
+        printf("Patient record not found.\n");
+        return;
+    }
+
+    if (strcmp(patient[index].status, "Discharged") == 0) {
+        printf("Validation Error: Patient already discharged from facility.\n");
+        return;
+    }
+
+    printf("Enter New Status (e.g., Stable, Critical, Under Observation): ");
+    fgets(patient[index].status, sizeof(patient[index].status), stdin);
+    patient[index].status[strcspn(patient[index].status, "\n")] = '\0';
+    printf("Success: Status updated to '%s'.\n", patient[index].status);
+}
