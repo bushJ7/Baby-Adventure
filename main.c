@@ -97,3 +97,31 @@ void display(Patient patient[], int size) {
     }
     printf("+-----------+----------------------+-----+------------------------+------------+----------------------+-------------+--------------+--------------+\n");
 }
+void add_patient(Patient patient[],int *size){
+    if(*size >= MAX_SIZE-1){
+        printf("the patient's data is full!\n");
+        return;
+    }
+    int curren_index = *size;
+    printf("=========================\n");
+    printf("enter your name: ");
+    fgets(patient[curren_index].name,sizeof(patient[curren_index].name),stdin);
+    patient[curren_index].name[strcspn(patient[curren_index].name, "\n")] = '\0';
+    printf("enter your id: ");
+    fgets(patient[curren_index].patient_id,sizeof(patient[curren_index].patient_id),stdin);
+    patient[curren_index].patient_id[strcspn(patient[curren_index].patient_id, "\n")] = '\0';
+    printf("enter your age: ");
+    scanf("%d",&patient[curren_index].age);
+    while (getchar() != '\n');
+    printf("enter symptom: ");
+    fgets(patient[curren_index].symptom,sizeof(patient[curren_index].symptom),stdin);
+    patient[curren_index].symptom[strcspn(patient[curren_index].symptom, "\n")] = '\0';
+    strcpy(patient[curren_index].status ,"waiting");
+    patient[curren_index].bill.medicineCost = 0;
+    patient[curren_index].bill.serviceFee = 0;
+    patient[curren_index].bill.totalBill = 0;
+    strcpy(patient[curren_index].dr.dr_name,"N/A");
+    strcpy(patient[curren_index].diagnose,"N/A");
+    *size=*size+1;
+    printf("patient info added successfully!\n");
+}
