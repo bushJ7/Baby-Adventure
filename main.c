@@ -161,3 +161,4 @@ void add_patient(Patient patient[], int *size){
     *size = *size + 1;
     printf("patient info added successfully!\n");
 }
+
