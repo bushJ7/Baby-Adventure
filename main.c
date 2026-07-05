@@ -45,8 +45,8 @@ int main()
     {"Dr. Casey Park", "Neurologist"}
 };
     int amount_of_DR = 5;
-    int count = 0;
-    load_data(patient,&count);
+    int patient_amount = 0;
+    load_data(patient,&patient_amount);
     int choice;
     do {
         printf("\n=========================================\n");
@@ -66,32 +66,32 @@ int main()
         while (getchar() != '\n');
         switch(choice) {
             case 1:
-                add_patient(patient,&count);
+                add_patient(patient,&patient_amount);
                 break;
             case 2:
-                display(patient,count);
+                display(patient,patient_amount);
                 break;
             case 3:{
-                search_patient(patient,count);
+                search_patient(patient,patient_amount);
                 break;
             }
             case 4:{
-                update_status(patient,count);
+                update_status(patient,patient_amount);
                 break;
             }
             case 5:{
-                assign_doctor(patient,count,hospitalDoctors,amount_of_DR);
+                assign_doctor(patient,patient_amount,hospitalDoctors,amount_of_DR);
                 break;
             }
             case 6:{
-                calculate_bill(patient,count);
+                calculate_bill(patient,patient_amount);
                 break;
             }
             case 7:
-                discharge(patient,count);
+                discharge(patient,patient_amount);
                 break;
             case 8:
-                record_info(patient,count);
+                record_info(patient,patient_amount);
                 break;
 
         }
@@ -303,7 +303,7 @@ void record_info(Patient patient[], int size){
     fclose(ptr);
 }
 
-void load_data(Patient patient[], int *count){
+void load_data(Patient patient[], int *patient_amount){
     FILE *ptr = fopen("patient_information.txt", "r");
     if(ptr == NULL){
         return;
@@ -332,9 +332,9 @@ void load_data(Patient patient[], int *count){
             break;
     }
 
-    *count = i;
+    *patient_amount = i;
     fclose(ptr);
-    printf("[System] Loaded %d patient records.\n", *count);
+    printf("[System] Loaded %d patient records.\n", *patient_amount);
 }
 
 void assign_doctor(Patient patient[],int size,Doctor Dr[],int dr_amount){
