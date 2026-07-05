@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-const int MAX_SIZE = 100;
-#define MAX_SIZE 100   
+const int MAX_SIZE = 100;   
 typedef struct {
     char dr_name[40];
     char specialty[40];
@@ -119,7 +118,7 @@ void update_status(Patient patient[],int size){
     fgets(patient[index].status, sizeof(patient[index].status), stdin);
     patient[index].status[strcspn(patient[index].status, "\n")] = '\0';
     printf("Success: Status updated to '%s'.\n", patient[index].status);
-
+}
 void display(Patient patient[], int size) {
     if (size == 0) {
         printf("No patient records found.\n");
@@ -225,7 +224,7 @@ void record_info(Patient patient[], int size){
         printf("Cannot open file!\n");
         return;
     }
-    // Header
+    
     fprintf(ptr,
     "ID|Name|Age|Symptom|Status|Diagnosis|Doctor|Service Fee|Medicine|Total Bill\n");
     for(int i = 0; i < size; i++){
