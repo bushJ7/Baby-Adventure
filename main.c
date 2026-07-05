@@ -243,3 +243,58 @@ void record_info(Patient patient[], int size){
     }
     fclose(ptr);
 }
+
+void load_data(Patient patient[], int *count){
+    FILE *ptr = fopen("patient_information.txt", "r");
+    if(ptr == NULL){
+        return;
+    }
+    char header[200];
+    fgets(header, sizeof(header), ptr);   
+    int i = 0;
+    while(
+        fscanf(ptr,
+        "%9[^|]|%49[^|]|%d|%39[^|]|%29[^|]|%29[^|]|%39[^|]|%f|%f|%f\n",
+        patient[i].patient_id,
+        patient[i].name,
+        &patient[i].age,
+        patient[i].symptom,
+        patient[i].status,
+        patient[i].diagnose,
+        patient[i].dr.dr_name,
+        &patient[i].bill.serviceFee,
+        &patient[i].bill.medicineCost,
+        &patient[i].bill.totalBill
+        ) == 10)
+    {
+        i++;
+
+        if(i >= MAX_SIZE)
+            break;
+    }
+
+    *count = i;
+    fclose(ptr);
+    printf("[System] Loaded %d patient records.\n", *count);
+}
+
+void assign_doctor(Patient patient[],int size,Doctor Dr[],int dr_amount){
+    char target_id[10];
+    prompt_id(target_id);
+    if(find_index(patient,size,target_id)==-1){
+        printf("patient not found!\n");
+        return;
+    }
+    int index = find_index(patient,size,target_id);
+    printf("-------Doctor Lists---------\n");
+    for(int i=0;i<dr_amount;i++){
+        printf("%d. %s (%s)\n",i+1,Dr[i].dr_name,Dr[i].specialty);
+    }
+    int dr_option;
+    printf("choose the doctor (1-5)");
+    scanf("%d",&dr_option);
+    while (getchar() != '\n');
+    dr_option--;
+    strcpy(patient[index].dr.dr_name,Dr[dr_option].dr_name);
+    printf("doctor assigned successfully\n");
+}
