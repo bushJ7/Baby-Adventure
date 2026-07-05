@@ -243,3 +243,37 @@ void record_info(Patient patient[], int size){
     }
     fclose(ptr);
 }
+
+void load_data(Patient patient[], int *count){
+    FILE *ptr = fopen("patient_information.txt", "r");
+    if(ptr == NULL){
+        return;
+    }
+    char header[200];
+    fgets(header, sizeof(header), ptr);   
+    int i = 0;
+    while(
+        fscanf(ptr,
+        "%9[^|]|%49[^|]|%d|%39[^|]|%29[^|]|%29[^|]|%39[^|]|%f|%f|%f\n",
+        patient[i].patient_id,
+        patient[i].name,
+        &patient[i].age,
+        patient[i].symptom,
+        patient[i].status,
+        patient[i].diagnose,
+        patient[i].dr.dr_name,
+        &patient[i].bill.serviceFee,
+        &patient[i].bill.medicineCost,
+        &patient[i].bill.totalBill
+        ) == 10)
+    {
+        i++;
+
+        if(i >= MAX_SIZE)
+            break;
+    }
+
+    *count = i;
+    fclose(ptr);
+    printf("[System] Loaded %d patient records.\n", *count);
+}
