@@ -36,7 +36,66 @@ int find_index(Patient patient[], int size, char target_id[]);
 void display(Patient patient[], int size);
 int main()
 {
-    printf("Program is running!\n");
+    Patient patient[MAX_SIZE];
+    Doctor hospitalDoctors[5] = {
+    {"Dr. Alex Smith" ,"Practitioner"},
+    {"Dr. Morgan Jones", "Cardiologist"},
+    {"Dr. Taylor Reed", "Pediatrician"},
+    {"Dr. Jordan Lee", "Orthopedist"},
+    {"Dr. Casey Park", "Neurologist"}
+};
+    int amount_of_DR = 5;
+    int count = 0;
+    load_data(patient,&count);
+    int choice;
+    do {
+        printf("\n=========================================\n");
+        printf("     HOSPITAL PATIENT RECORD SYSTEM      \n");
+        printf("=========================================\n");
+        printf("1. Add New Patient Record\n");
+        printf("2. display all the patient\n");
+        printf("3. Search Patient Record\n");
+        printf("4. Update Patient Status\n");
+        printf("5. Assign Doctor to Patient\n");
+        printf("6. Calculate Patient Bill\n");
+        printf("7. Discharge Patient & Print Report\n");
+        printf("8. Save and Exit\n");
+        printf("-----------------------------------------\n");
+        printf("Enter your choice (1-7): ");
+        scanf("%d", &choice);
+        while (getchar() != '\n');
+        switch(choice) {
+            case 1:
+                add_patient(patient,&count);
+                break;
+            case 2:
+                display(patient,count);
+                break;
+            case 3:{
+                search_patient(patient,count);
+                break;
+            }
+            case 4:{
+                update_status(patient,count);
+                break;
+            }
+            case 5:{
+                assign_doctor(patient,count,hospitalDoctors,amount_of_DR);
+                break;
+            }
+            case 6:{
+                calculate_bill(patient,count);
+                break;
+            }
+            case 7:
+                discharge(patient,count);
+                break;
+            case 8:
+                record_info(patient,count);
+                break;
+
+        }
+    } while(choice != 8);
     return 0;
 }
 int find_index(Patient patient[], int size, char target_id[]){
