@@ -1,3 +1,31 @@
+/**
+ * @file    main.c
+ * @author  Makara
+ * @version v1.0
+ * @date    7-July-2026
+ * @brief   Hospital Patient Record Management System.
+ *
+ * This program is a console-based hospital management system developed
+ * using the C programming language. It allows hospital staff to manage
+ * patient records efficiently by providing the following features:
+ *
+ * - Add new patient records.
+ * - Display all patient records.
+ * - Search patients by ID.
+ * - Update patient health status.
+ * - Assign doctors to patients.
+ * - Calculate patient service and medicine bills.
+ * - Generate patient discharge summaries.
+ * - Save and load patient records using a text file.
+ *
+ * The system uses structures to organize patient, doctor, and billing
+ * information, and file handling to maintain records between program runs.
+ *
+ * @attention
+ * This project was developed as part of the Computer Fundamental course
+ * at CamTech University.
+ */
+
 #include <stdio.h>
 #include <string.h>
 const int MAX_SIZE = 100;   
