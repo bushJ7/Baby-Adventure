@@ -1,6 +1,6 @@
 /**
  * @file    main.c
- * @author  Makara
+ * @author  Baby-Adventure
  * @version v1.0
  * @date    7-July-2026
  * @brief   Hospital Patient Record Management System.
