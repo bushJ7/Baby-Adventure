@@ -121,7 +121,9 @@ int main()
             case 8:
                 record_info(patient,patient_amount);
                 break;
-
+            default:{
+                printf("invalid option\n");
+            }
         }
     } while(choice != 8);
     return 0;
