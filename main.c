@@ -64,17 +64,17 @@ int main()
         while (getchar() != '\n');
         switch(choice) {
             case 1:
-                add_patient(patient,&patient_amount);
+                add_patient(patient,&patient_amount); //lyheang
                 break;
             case 2:
                 display(patient,patient_amount);
                 break;
             case 3:{
-                search_patient(patient,patient_amount);
+                search_patient(patient,patient_amount); //sithikar
                 break;
             }
             case 4:{
-                update_status(patient,patient_amount);
+                update_status(patient,patient_amount); //kim nai
                 break;
             }
             case 5:{
@@ -82,14 +82,14 @@ int main()
                 break;
             }
             case 6:{
-                calculate_bill(patient,patient_amount);
+                calculate_bill(patient,patient_amount); //kim Eng
                 break;
             }
             case 7:
-                discharge(patient,patient_amount);
+                discharge(patient,patient_amount); //ronith
                 break;
             case 8:
-                record_info(patient,patient_amount);
+                record_info(patient,patient_amount); //ronith
                 break;
  
         }
